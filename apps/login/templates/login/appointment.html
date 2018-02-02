@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<a href="/">Logout</a><p></p>
+	<a href="/success">Home</a><p></p>
+{{b.destination}}<p></p>
+{{b.description}}<p></p>
+{{b.travel_from}}<p></p>
+{{b.travel_to}}<p></p>
+
+Other Users Joining<p></p>
+{% for b in q %}
+            <tr>
+                <td>{{ b.fkonetom.first_name }}</td>
+            </tr>
+            {% endfor %}
+</body>
+</html>

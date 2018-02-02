@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <a href="/">Logout</a></p>
+        <h1>Success! Welcome, {{ user.first_name }}.</h1>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+         <table style="width:100%">
+            <tr>
+                <th>Destination</th>
+                <th>Description</th> 
+                <th>Travel From</th>
+                <th>Travel To</th>
+                
+            </tr>
+            {% for x in q %}
+            <tr>
+                <td><a href="/edit/{{ x.id }}"">{{ x.destination }}</a></td>
+                <td>{{ x.description }}</td> 
+                <td>{{ x.travel_from }}</td>
+                <td>{{ x.travel_to }}</td>
+                
+                
+            </tr>
+            {% endfor %}
+            </table><p></p>
+
+        <table style="width:100%">
+            <tr>
+                <th>Destination</th>
+                <th>Description</th> 
+                <th>Travel From</th>
+                <th>Travel To</th>
+                <th>Traveler</th>
+                <th>Join</th>
+            </tr>
+            {% for y in d %}
+            <tr>
+                <td><a href="/edit/{{ y.id }}">{{ y.destination }}</a></td>
+                <td>{{ y.description }}</td> 
+                <td>{{ y.travel_from }}</td>
+                <td>{{ y.travel_to }}</td>
+                <td>{{ y.fkonetom.first_name }}
+                <td><form action="/join" method="POST">{% csrf_token %}<button type="submit">Join</button></form></td>
+            </tr>
+            {% endfor %}
+            </table><p></p>
+
+            <form action="/add_new">
+                <input type="submit" value="New Trip">
+            </form>
+
+
+    </body>
+
+
+
+</html>
